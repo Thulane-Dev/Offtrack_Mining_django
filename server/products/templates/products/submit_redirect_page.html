@@ -1,0 +1,28 @@
+{% load static %}
+
+<section class="container" style="margin-top: 150px; margin-bottom: 150px">
+  <div class="row">
+    <div class="col">
+      <div>
+        <center>
+          <h1 class="fw-bold">Thank You for Your Submission</h1>
+          <p class="mb-3">
+            We’ve received your enquiry and will get back to you soon.
+          </p>
+          <a
+            href="{% url 'index' %}"
+            hx-get="{% url 'index' %}"
+            hx-target="#content"
+            hx-push-url="true"
+          >
+            <button
+              class="btn btn-dark orange_secondary_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3"
+            >
+              Return home <i class="bi bi-arrow-right"></i>
+            </button>
+          </a>
+        </center>
+      </div>
+    </div>
+  </div>
+</section>

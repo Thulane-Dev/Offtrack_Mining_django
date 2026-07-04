@@ -1,0 +1,122 @@
+{% load static %}
+<!-- ======= Footer ======= -->
+<section class="footer_container">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4 mb-5">
+        <img
+          src="{% static '/images/no_bg_offtrack.png' %}"
+          alt=""
+          class="footer_logo mb-4"
+        />
+        <p class="text-white mb-4">
+          <span class="fw-bold">Offtrack Engineering (Pty) Ltd</span>
+          delivers reliable engineering, electrical, and labour solutions
+          tailored for the mining industry.
+        </p>
+        <div class="d-flex gap-2">
+          <div class="socials_card">
+            <i class="bi bi-whatsapp"></i>
+          </div>
+          <div class="socials_card">
+            <i class="bi bi-instagram"></i>
+          </div>
+          <div class="socials_card">
+            <i class="bi bi-facebook"></i>
+          </div>
+          <div class="socials_card">
+            <i class="bi bi-linkedin"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mb-5">
+        <h4 class="text-capitalize fw-bold text-white mb-2">useful links</h4>
+        <hr class="py-1 mb-5" style="color: #f55b14" />
+        <a
+          href="{% url 'index' %}"
+          hx-get="{% url 'index' %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          <p class="text-white d-flex gap-1">
+            <i class="bi bi-check-all"></i>Home
+          </p>
+        </a>
+        <a
+          href="{% url 'about' %}"
+          hx-get="{% url 'about' %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          <p class="text-white d-flex gap-1">
+            <i class="bi bi-check-all"></i>About
+          </p>
+        </a>
+        <a
+          href="{% url 'marketplace' %}"
+          hx-get="{% url 'marketplace' %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          <p class="text-white d-flex gap-1">
+            <i class="bi bi-check-all"></i>Marketplace
+          </p>
+        </a>
+        <a
+          href="{% url 'services' %}"
+          hx-get="{% url 'services' %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          <p class="text-white d-flex gap-1">
+            <i class="bi bi-check-all"></i>Services
+          </p>
+        </a>
+
+        <a
+          href="{% url 'contract' %}"
+          hx-get="{% url 'contract' %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          <p class="text-white d-flex gap-1">
+            <i class="bi bi-check-all"></i>Contact Us
+          </p>
+        </a>
+      </div>
+      <div class="col-12 col-md-4 mb-5">
+        <h4 class="text-capitalize fw-bold text-white mb-2">contact form</h4>
+        <hr class="py-1 mb-5" style="color: #f55b14" />
+        <div class="d-flex gap-3 mb-5">
+          <div class="socials_card">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
+          <div>
+            <p class="mb-2 text-white">102 Tauthabaneng</p>
+            <p class="mb-2 text-white">Steelport Park</p>
+            <p class="mb-2 text-white">Kutullo Vilage</p>
+            <p class="mb-2 text-white">Ngwabe</p>
+            <p class="mb-2 text-white">1058</p>
+          </div>
+        </div>
+        <div class="d-flex gap-3 mb-5">
+          <div class="socials_card">
+            <i class="bi bi-envelope-fill"></i>
+          </div>
+          <div>
+            <p class="mb-2 text-white">info@offtrackmining.co.za</p>
+          </div>
+        </div>
+        <div class="d-flex gap-3">
+          <div class="socials_card">
+            <i class="bi bi-telephone-inbound-fill"></i>
+          </div>
+          <div>
+            <p class="mb-2 text-white">+27 68 558 9692</p>
+            <p class="mb-2 text-white">+27 81 417 2081</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

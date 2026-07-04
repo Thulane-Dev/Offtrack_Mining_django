@@ -1,0 +1,146 @@
+{% load static %}
+<section class="service_page_background d-flex align-items-end">
+  <div class="container overflow_content">
+    <center>
+      <h2
+        class="headings mb-5 text-white page_header_titles"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="800"
+      >
+        Services
+      </h2>
+    </center>
+  </div>
+</section>
+
+<!-- ======= Service Catalogue  ======= -->
+<section class="d-none d-md-block" style="margin-top: 100px">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <ul class="nav flex-column">
+          {% for data in services %}
+          <li class="nav-item">
+            <a
+              class="nav-link d-flex gap-2 {% if forloop.first %}active{% endif %}"
+              data-bs-toggle="collapse"
+              href="#service{{ data.id }}"
+              {%
+              if
+              forloop.first
+              %}
+              aria-expanded="true"
+              {%
+              else
+              %}
+              aria-expanded="false"
+              {%
+              endif
+              %}
+            >
+              <i class="bi bi-chevron-right"></i>
+              {{ data.name }}
+            </a>
+
+            <div
+              class="collapse {% if forloop.first %}show{% endif %}"
+              id="service{{ data.id }}"
+            >
+              <ul class="nav flex-column ms-3">
+                {% for catalogue in data.service.all %}
+                <li>
+                  <form
+                    hx-post="{% url 'filter-category' %}"
+                    hx-target="#catalogPartial"
+                    hx-indicator=".loading"
+                    hx-swap="innerHTML"
+                  >
+                    {% csrf_token %}
+                    <input
+                      type="text"
+                      value="{{ catalogue.id }}"
+                      name="catalog_id"
+                      hidden
+                    />
+                    <button
+                      class="p-0 m-0 border-0 d-flex gap-2"
+                      style="background-color: transparent"
+                      type="submit"
+                    >
+                      <p
+                        class="nav-link mb-0 d-flex gap-2"
+                        style="font-weight: 400 !important"
+                      >
+                        <i
+                          class="bi bi-chevron-right"
+                          style="color: orangered !important"
+                        ></i>
+                        {{ catalogue.name }}
+                      </p>
+                    </button>
+                  </form>
+                </li>
+                {% empty %}
+                <li>No catalogs available</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col">
+        <!-- ======= Catalog  ======= -->
+        <div id="catalogPartial">
+          {% include 'partials/catalogue_partial.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= Small Screen Service Catalogue  ======= -->
+<section
+  class="section_spacing container d-block d-md-none"
+  style="margin-top: 100px"
+>
+  <div>{% include 'partials/sm_products_partial.html' %}</div>
+</section>
+
+<section class="mt-5">
+  <div class="us_orange_container d-flex align-items-center">
+    <div class="container">
+      <div class="row overflow_content">
+        <div
+          class="col-12 col-md-8 mb-3"
+          data-aos="fade-right"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          <h3 class="text-white fw-bold mb-0">
+            contact with us for customer support
+          </h3>
+        </div>
+        <div
+          class="col-12 col-md-3"
+          data-aos="fade-right"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          <a
+            href="{% url 'contract' %}"
+            hx-get="{% url 'contract' %}"
+            hx-target="#content"
+            hx-push-url="true"
+          >
+            <button class="btn btn-dark blue_btn py-3 px-5 d-flex">
+              Get Support <i class="bi bi-chevron-right"></i>
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,96 @@
+{% load static %}
+<!-- ======= Navbar  ======= -->
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light navbar_container py-3 fixed-top shadow"
+>
+  <div class="container">
+    <a
+      class="navbar-brand navbar_title d-flex align-items-center gap-3"
+      href="{% url 'index' %}"
+      hx-get="{% url 'index' %}"
+      hx-target="#content"
+      hx-push-url="true"
+    >
+      <img
+        src="{% static '/images/no_bg_offtrack.png' %}"
+        alt=""
+        class="d-inline-block align-text-top navbar_logo"
+      />
+    </a>
+    <a href="{% url 'menu' %}">
+      <button class="navbar-toggler border-0" type="button">
+        <i class="bi bi-list menu_icon"></i>
+      </button>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="{% url 'index' %}"
+            hx-get="{% url 'index' %}"
+            hx-target="#content"
+            hx-push-url="true"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{% url 'about' %}"
+            hx-get="{% url 'about' %}"
+            hx-target="#content"
+            hx-push-url="true"
+            >About</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{% url 'marketplace' %}"
+            hx-get="{% url 'marketplace' %}"
+            hx-target="#content"
+            hx-push-url="true"
+            >Marketplace</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{% url 'services' %}"
+            hx-get="{% url 'services' %}"
+            hx-target="#content"
+            hx-push-url="true"
+            >Services</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{% url 'contract' %}"
+            hx-get="{% url 'contract' %}"
+            hx-target="#content"
+            hx-push-url="true"
+            >Contact</a
+          >
+        </li>
+      </ul>
+
+      <div class="d-flex">
+        <a
+          href="{% url 'contract' %}"
+          hx-get="{% url 'contract' %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          <button
+            class="btn btn-dark orange_secondary_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3"
+          >
+            Get Support <i class="bi bi-arrow-right"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

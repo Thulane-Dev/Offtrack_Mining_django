@@ -1,0 +1,80 @@
+{% load static %}
+
+<div class="pt-4 fixed-top bg-white">
+  <img
+    src="{% static '/images/no_bg_offtrack.png' %}"
+    alt=""
+    class="d-inline-block align-text-top navbar_logo mb-4"
+    style="height: 90px !important; width: 100%"
+  />
+</div>
+
+<section>
+  <div class="container" style="margin-bottom: 70px; margin-top: 90px">
+    <center>
+      <a href="{% url 'index' %}">
+        <div>
+          <i class="bi bi-house sm_menu_icon"></i>
+          <h6 class="mb-4 mt-2" style="font-weight: 600">Home</h6>
+        </div>
+      </a>
+      <hr class="my-3 list_border" />
+      <a href="{% url 'about' %}">
+        <div>
+          <i class="bi bi-people sm_menu_icon"></i>
+          <h6 class="mb-4 mt-2" style="font-weight: 600">About</h6>
+        </div>
+      </a>
+      <hr class="my-3 list_border" />
+      <a href="{% url 'marketplace' %}">
+        <div>
+          <i class="bi bi-shop sm_menu_icon"></i>
+          <h6 class="mb-4 mt-2" style="font-weight: 600">Marketplace</h6>
+        </div>
+      </a>
+      <hr class="my-3 list_border" />
+      <a href="{% url 'services' %}">
+        <div>
+          <i class="bi bi-gear sm_menu_icon"></i>
+          <h6 class="mb-4 mt-2" style="font-weight: 600">Services</h6>
+        </div>
+      </a>
+      <hr class="my-3 list_border" />
+      <a href="{% url 'contract' %}">
+        <div>
+          <i class="bi-envelope sm_menu_icon"></i>
+          <h6 class="mb-4 mt-2" style="font-weight: 600">Contract Us</h6>
+        </div>
+      </a>
+    </center>
+  </div>
+</section>
+
+<!-- ======= Footer ======= -->
+<section class="footer_container" style="min-height: 200px !important">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4 mb-5">
+        <p class="text-white mb-4">
+          <span class="fw-bold">Offtrack Engineering (Pty) Ltd</span>
+          delivers reliable engineering, electrical, and labour solutions
+          tailored for the mining industry.
+        </p>
+        <div class="d-flex gap-2">
+          <div class="socials_card">
+            <i class="bi bi-whatsapp"></i>
+          </div>
+          <div class="socials_card">
+            <i class="bi bi-instagram"></i>
+          </div>
+          <div class="socials_card">
+            <i class="bi bi-facebook"></i>
+          </div>
+          <div class="socials_card">
+            <i class="bi bi-linkedin"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

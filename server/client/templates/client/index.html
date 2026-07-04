@@ -1,0 +1,529 @@
+{% load static %}
+
+<!-- ======= Hero  ======= -->
+<section
+  class="hero_container d-flex justify-content-center align-items-center"
+>
+  <div class="container overflow_content">
+    <center>
+      <img
+        src="{% static '/images/no_bg_offtrack.png' %}"
+        alt=""
+        class="hero_logo"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      />
+      <h1
+        class="hero_text text-capitalize"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        Engineering Innovative Solutions
+      </h1>
+      <h1
+        class="hero_text mb-5 text-capitalize"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        for Modern Mining Operations
+      </h1>
+      <p
+        class="text-white mb-1"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        Delivering dependable engineering, electrical, and labour solutions
+      </p>
+      <p
+        class="text-white"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        that keep mining operations efficient, safe, and moving forward.
+      </p>
+    </center>
+    <div class="row d-flex justify-content-center mt-5 overflow_content">
+      <div
+        class="col-12 col-md-3 mb-3"
+        data-aos="fade-left"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        <a
+          href="{% url 'about' %}"
+          hx-get="{% url 'about' %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          <button
+            class="btn btn-dark orange_secondary_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3 hero_btns"
+          >
+            Learn More <i class="bi bi-arrow-right"></i>
+          </button>
+        </a>
+      </div>
+      <div
+        class="col-12 col-md-3 mb-3"
+        data-aos="fade-left"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        <a
+          href="{% url 'contract' %}"
+          hx-get="{% url 'contract' %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          <button
+            class="btn btn-dark blue_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3 hero_btns"
+          >
+            Contact Us <i class="bi bi-arrow-right"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= Service Catalogue  ======= -->
+<section class="section_spacing d-none d-md-block">
+  <div class="container">
+    <div class="d-flex justify-content-end">
+      <a
+        href="{% url 'marketplace' %}"
+        hx-get="{% url 'marketplace' %}"
+        hx-target="#content"
+        hx-push-url="true"
+      >
+        <button
+          class="btn btn-dark orange_secondary_btn d-flex justify-content-center gap-3 fw-bold px-4 py-2 mb-2"
+        >
+          View Marketplace <i class="bi bi-arrow-right"></i>
+        </button>
+      </a>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-3 mb-4">
+        <ul class="nav flex-column" id="servicesAccordion">
+          {% for data in services %}
+          <li class="nav-item">
+            <!-- Accordion Trigger -->
+            <a
+              class="nav-link d-flex gap-2 {% if forloop.first %}active{% endif %}"
+              data-bs-toggle="collapse"
+              href="#service{{ data.id }}"
+              role="button"
+              {%
+              if
+              forloop.first
+              %}
+              aria-expanded="true"
+              {%
+              else
+              %}
+              aria-expanded="false"
+              {%
+              endif
+              %}
+            >
+              <i class="bi bi-chevron-right"></i>
+              {{ data.name }}
+            </a>
+
+            <!-- Accordion Body -->
+            <div
+              id="service{{ data.id }}"
+              class="collapse {% if forloop.first %}show{% endif %}"
+              data-bs-parent="#servicesAccordion"
+            >
+              <ul class="nav flex-column ms-3">
+                {% for catalogue in data.service.all %}
+                <li>
+                  <form
+                    hx-post="{% url 'filter-category' %}"
+                    hx-target="#catalogPartial"
+                    hx-indicator=".loading"
+                    hx-swap="innerHTML"
+                  >
+                    {% csrf_token %}
+
+                    <input
+                      type="hidden"
+                      name="catalog_id"
+                      value="{{ catalogue.id }}"
+                    />
+
+                    <button
+                      type="submit"
+                      class="p-0 m-0 border-0 d-flex gap-2"
+                      style="background: transparent"
+                    >
+                      <p
+                        class="nav-link mb-0 d-flex gap-2"
+                        style="font-weight: 400 !important"
+                      >
+                        <i
+                          class="bi bi-chevron-right"
+                          style="color: orangered !important"
+                        ></i>
+                        {{ catalogue.name }}
+                      </p>
+                    </button>
+                  </form>
+                </li>
+
+                {% empty %}
+                <li class="my-2 text-secondary" style="padding-left: 30px">
+                  No catalogs available
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-12 col-lg-8 mb-4">
+        <!-- ======= Catalog  ======= -->
+        <div id="catalogPartial">
+          {% include 'partials/catalogue_partial.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= Small Screen Service Catalogue  ======= -->
+<section class="section_spacing container mb-5 d-block d-md-none">
+  <div>{% include 'partials/sm_products_partial.html' %}</div>
+</section>
+
+<!-- ======= Banner  ======= -->
+<section class="overflow_content">
+  <div
+    class="section_banner"
+    data-aos="fade-right"
+    data-aos-delay="50"
+    data-aos-duration="1000"
+  ></div>
+</section>
+
+<!-- ======= About Us  ======= -->
+<section class="section_spacing">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-12 col-lg-8 mb-4 overflow_content">
+        <div class="h-100">
+          <button
+            class="btn btn-dark orange_btn px-3 mb-4"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+          >
+            About Us
+          </button>
+          <h3
+            class="headings mb-3"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+          >
+            OFFTRACK ENGINEERING
+          </h3>
+          <p data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
+            Offtrack Engineering (Pty) Ltd stands as a dynamic and
+            forward-thinking mining and engineering enterprise, strategically
+            instituted to propel a new era of pioneering innovations and
+            cutting-edge product development within the expanse of the mining
+            sector. With a profound commitment to reshaping the industry
+            landscape, our core mission orbits around the pursuit of catalyzing
+            groundbreaking advancements that transcend traditional boundaries.
+          </p>
+          <p data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
+            At the very core of our organizational ethos resides a resolute and
+            unwavering mission, one that is tirelessly committed to fostering
+            advancements and driving transformative outcomes for our esteemed
+            clientele. Through the meticulous curation and delivery of services
+            and products of the utmost excellence, fortify- ing safety
+            protocols, and bolstering over- all profitability.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-4 mb-4 overflow_content">
+        <div
+          class="blue_card h-100"
+          data-aos="fade-left"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          <div class="orange_card p-5">
+            <center>
+              <h3 class="orange_card_heading mb-0">Get In Touch</h3>
+            </center>
+          </div>
+          <div class="p-4">
+            <form method="POST" action="{% url 'contract-enquiry' %}">
+              {% csrf_token %}
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control rounded-0"
+                  id="floatingInput"
+                  placeholder="Full Name"
+                  name="full_name"
+                  required
+                />
+                <label for="floatingInput">Full Name</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control rounded-0"
+                  id="floatingInput"
+                  placeholder="name@example.com"
+                  name="email"
+                  required
+                />
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="number"
+                  class="form-control rounded-0"
+                  id="floatingInput"
+                  placeholder="Phone No"
+                  name="phone"
+                  required
+                />
+                <label for="floatingInput">Phone No</label>
+              </div>
+              <div class="form-floating mb-4">
+                <textarea
+                  class="form-control rounded-0"
+                  placeholder="Leave a message here"
+                  id="floatingTextarea2"
+                  style="min-height: 200px"
+                  name="message"
+                  required
+                ></textarea>
+                <label for="floatingTextarea2">Message</label>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-light rounded-0 white_btn p-3"
+              >
+                Submit Now
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= why choose us  ======= -->
+<section class="section_spacing overflow_content">
+  <div class="row g-0">
+    <div class="col-12 col-md-6">
+      <div class="us_image h-100"></div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="us_card h-100 overflow_content">
+        <h6
+          class="orange_text"
+          data-aos="fade-left"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          Why Choose Us
+        </h6>
+        <h2
+          class="headings mb-5 text-white"
+          data-aos="fade-left"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          Why Clients Trust Offtrack Engineering
+        </h2>
+        <div
+          class="d-flex gap-3 mb-5"
+          data-aos="fade-left"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          <div class="circle_card">
+            <i class="bi-award-fill"></i>
+          </div>
+          <div>
+            <h5 class="text-white" style="font-weight: 600">
+              Proven Industry Expertise
+            </h5>
+            <p class="mb-0" style="color: rgb(205, 205, 205)">
+              Our experienced team delivers trusted mining and engineering
+              solutions built on years of hands-on industry knowledge.
+            </p>
+          </div>
+        </div>
+        <!-- end item  -->
+        <div
+          class="d-flex gap-3 mb-5"
+          data-aos="fade-left"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          <div class="circle_card">
+            <i class="bi-shield-check"></i>
+          </div>
+          <div>
+            <h5 class="text-white" style="font-weight: 600">
+              Reliable & Safe Solutions
+            </h5>
+            <p class="mb-0" style="color: rgb(205, 205, 205)">
+              We prioritize safety, quality, and efficiency to ensure dependable
+              services that meet demanding operational standards.
+            </p>
+          </div>
+        </div>
+        <!-- end item  -->
+        <div
+          class="d-flex gap-3 mb-5"
+          data-aos="fade-left"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          <div class="circle_card">
+            <i class="bi-lightning-charge-fill"></i>
+          </div>
+          <div>
+            <h5 class="text-white" style="font-weight: 600">
+              Fast Turnaround & Support
+            </h5>
+            <p class="mb-0" style="color: rgb(205, 205, 205)">
+              We respond quickly and work efficiently to reduce downtime and
+              keep your operations running smoothly.
+            </p>
+          </div>
+        </div>
+        <!-- end item  -->
+      </div>
+    </div>
+  </div>
+  <div
+    class="us_orange_container d-flex align-items-center"
+    data-aos="fade-left"
+    data-aos-delay="50"
+    data-aos-duration="1000"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-8 mb-3">
+          <h3 class="text-white fw-bold mb-0">
+            contact with us for customer support
+          </h3>
+        </div>
+        <div class="col-12 col-md-3">
+          <a
+            href="{% url 'contract' %}"
+            hx-get="{% url 'contract' %}"
+            hx-target="#content"
+            hx-push-url="true"
+          >
+            <button class="btn btn-dark blue_btn py-3 px-5 d-flex">
+              Get Support <i class="bi bi-chevron-right"></i>
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= Team  ======= -->
+<section class="section_spacing">
+  <div class="container overflow_content">
+    <center>
+      <h6
+        class="orange_text"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        The People Behind Our Expertise
+      </h6>
+      <h2
+        class="headings mb-3"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        Meet Our Skilled Leadership Team
+      </h2>
+      <p
+        class="mb-5"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        Our team brings together years of industry experience, technical
+        excellence, and hands-on knowledge to deliver reliable engineering
+        solutions you can trust.
+      </p>
+    </center>
+    <div class="row d-flex justify-content-center overflow_content">
+      <div
+        class="col-12 col-md-4 mb-4"
+        data-aos="zoom-in"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        <center>
+          <div class="team_avatar mb-5">
+            <i class="bi-person-badge-fill"></i>
+          </div>
+          <h5>Mthokozisi Mathe</h5>
+          <p class="mb-3">Team Leader</p>
+          <p class="text-secondary">
+            Mr Mathe comes with a wealth of knowledge and experience having
+            previously worked at Sandvik for 15 years. He is a qualified TMM
+            artisan with experience in underground mining TMM maintenance and
+            rebuilds, and compo- nent repairs including drifters.
+          </p>
+        </center>
+      </div>
+      <!-- end col item  -->
+      <div
+        class="col-12 col-md-4 mb-4"
+        data-aos="zoom-in"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        <center>
+          <div class="team_avatar mb-5">
+            <i class="bi-gear-wide-connected"></i>
+          </div>
+          <h5>John Mokoena</h5>
+          <p class="mb-3">Axle Artisan</p>
+          <p class="text-secondary">
+            Mr Mokoena is a highly experienced drivetrain Kessler-trained
+            artisan with more than 12 years in the industry, with a deep
+            understand- ing of products and services needed to keep any TMM
+            drivetrain efficient and effective.
+          </p>
+        </center>
+      </div>
+      <!-- end col item  -->
+    </div>
+  </div>
+</section>
+
+<!-- bottom spacing  -->
+<div class="section_spacing"></div>
+
+

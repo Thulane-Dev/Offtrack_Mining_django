@@ -1,0 +1,233 @@
+<!-- ======= Small Screen Service Catalogue  ======= -->
+{% if display_labels == True %}
+<a
+  href="{% url 'marketplace' %}"
+  hx-get="{% url 'marketplace' %}"
+  hx-target="#content"
+  hx-push-url="true"
+>
+  <p
+    class="d-flex justify-content-end gap-2"
+    style="color: rgb(15, 25, 52); font-weight: 500"
+  >
+    View Marketplace
+    <i class="bi bi-arrow-right-circle-fill" style="color: #f25334"></i>
+  </p>
+</a>
+<h4 class="orange_text mb-4 fw-bold">Our Marketplace</h4>
+{% endif %}
+
+<!-- Divider  -->
+
+<ul class="list-group list-group-flush px-0 mx-0">
+  <ul class="nav flex-column">
+    {% for data in services %}
+    <!-- divider  -->
+    {% if forloop.first %}
+    <li class="nav-item px-0 mx-0">
+      <!-- Service Toggle -->
+      <a
+        class="px-0 mx-0 nav-link d-flex gap-2 {% if forloop.first %}active{% endif %}"
+        data-bs-toggle="collapse"
+        href="#service{{ data.id }}"
+        aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+      >
+        <i class="bi bi-chevron-right"></i>
+        {{ data.name }}
+      </a>
+
+      <div
+        class="collapse {% if forloop.first %}show{% endif %}"
+        id="service{{ data.id }}"
+      >
+        <ul class="nav flex-column ms-3">
+          {% for catalogue in data.service.all %}
+          <li>
+            <!-- Catalogue Toggle -->
+            <a
+              class="mx-0 px-0 nav-link d-flex gap-2"
+              data-bs-toggle="collapse"
+              href="#catalogue{{ catalogue.id }}"
+              aria-expanded="{% if forloop.parentloop.first and forloop.first %}true{% else %}false{% endif %}"
+              style="font-weight: 400"
+            >
+              <i class="bi bi-chevron-right" style="color: orangered"></i>
+              {{ catalogue.name }}
+            </a>
+
+            <!-- Expandable Images -->
+            <div
+              class="mt-3 collapse {% if forloop.parentloop.first and forloop.first %}show{% endif %}"
+              id="catalogue{{ catalogue.id }}"
+            >
+              <div class="row my-4">
+                {% for product in catalogue.catalogue.all %}
+                <!-- divider  -->
+                <!-- divider  -->
+                {% if data.name != 'Marketplace' %}
+                <div class="col-12">
+                  <div class="p-3 border product_card mb-3">
+                    <p class="mb-">{{product.description_intro}}</p>
+                  </div>
+                </div>
+                {% else %}
+                <!-- divider  -->
+                <div class="col-6 col-lg-3 mb-3">
+                  <div class="p-2 border product_card h-100">
+                    {% if product.image %}
+                    <img
+                      src="{{product.image.url}}"
+                      alt=""
+                      class="product_image_sm mb-4"
+                    />
+                    {% endif %}
+                    <center>
+                      <p class="mb-2">{{product.name}}</p>
+                      <a
+                        href="{% url 'service' product.uuid product.name|slugify  %}"
+                        hx-get="{% url 'service' product.uuid product.name|slugify  %}"
+                        hx-target="#content"
+                        hx-push-url="true"
+                      >
+                        <p class="mb-1 fw-bold mobile_more_link">
+                          More <i class="bi bi-chevron-right"></i>
+                        </p>
+                      </a>
+                    </center>
+                  </div>
+                </div>
+                {% endif %}
+                <!-- divider  -->
+                {% empty %}
+                <p class="fw-bold">No Service available</p>
+                {% endfor %}
+              </div>
+            </div>
+
+            {% if data.name != 'Marketplace' %}
+            <!-- Action button  -->
+            <a
+              href="{% url 'service-quote' data.id  data.name|slugify  %}"
+              hx-get="{% url 'service-quote' data.id  data.name|slugify  %}"
+              hx-target="#content"
+              hx-push-url="true"
+            >
+              <button
+                class="btn btn-dark blue_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3 hero_btns mb-4"
+              >
+                Request Quote <i class="bi bi-arrow-right"></i>
+              </button>
+            </a>
+            {% endif %}
+          </li>
+          {% empty %}
+          <li class="py-3">No catalogues available</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </li>
+    {% else %}
+    <li class="nav-item px-0 mx-0">
+      <!-- Service Toggle -->
+      <a
+        class="px-0 mx-0 nav-link d-flex gap-2 {% if forloop.first %}active{% endif %}"
+        data-bs-toggle="collapse"
+        href="#service{{ data.id }}"
+        aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+      >
+        <i class="bi bi-chevron-right"></i>
+        {{ data.name }}
+      </a>
+
+      <div
+        class="collapse {% if forloop.first %}show{% endif %}"
+        id="service{{ data.id }}"
+      >
+        <ul class="nav flex-column ms-3">
+          {% for catalogue in data.service.all %}
+          <li>
+            <!-- Catalogue Toggle -->
+            <a
+              class="mx-0 px-0 nav-link d-flex gap-2"
+              data-bs-toggle="collapse"
+              href="#catalogue{{ catalogue.id }}"
+              aria-expanded="{% if forloop.parentloop.first and forloop.first %}true{% else %}false{% endif %}"
+              style="font-weight: 400"
+            >
+              <i class="bi bi-chevron-right" style="color: orangered"></i>
+              {{ catalogue.name }}
+            </a>
+
+            <!-- Expandable Images -->
+            <div
+              class="mt-3 collapse {% if forloop.parentloop.first and forloop.first %}show{% endif %}"
+              id="catalogue{{ catalogue.id }}"
+            >
+              <div class="row my-4">
+                {% for product in catalogue.catalogue.all %}
+                <!-- divider  -->
+                {% if data.name != 'Marketplace' %}
+                <div class="col-12">
+                  <div class="p-3 border product_card mb-3">
+                    <p class="mb-">{{product.description_intro}}</p>
+                  </div>
+                </div>
+                {% else %}
+                <!-- divider  -->
+                <div class="col-6 col-lg-3 mb-3">
+                  <div class="p-2 border product_card h-100">
+                    {% if product.image %}
+                    <img
+                      src="{{product.image.url}}"
+                      alt=""
+                      class="product_image_sm mb-4"
+                    />
+                    {% endif %}
+                    <center>
+                      <p class="mb-2">{{product.name}}</p>
+                      <a
+                        href="{% url 'service' product.uuid product.name|slugify  %}"
+                        hx-get="{% url 'service' product.uuid product.name|slugify  %}"
+                        hx-target="#content"
+                        hx-push-url="true"
+                      >
+                        <p class="mb-1 fw-bold mobile_more_link">
+                          More <i class="bi bi-chevron-right"></i>
+                        </p>
+                      </a>
+                    </center>
+                  </div>
+                </div>
+                {% endif %}
+                <!-- divider  -->
+                {% empty %}
+                <p class="fw-bold">No Service available</p>
+                {% endfor %}
+              </div>
+
+              <!-- Action button  -->
+              <a
+                href="{% url 'service-quote' data.id  data.name|slugify  %}"
+                hx-get="{% url 'service-quote' data.id  data.name|slugify  %}"
+                hx-target="#content"
+                hx-push-url="true"
+              >
+                <button
+                  class="btn btn-dark blue_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3 hero_btns mb-4"
+                >
+                  Request Quote <i class="bi bi-arrow-right"></i>
+                </button>
+              </a>
+            </div>
+          </li>
+          {% empty %}
+          <li class="py-3">No catalogs available</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </li>
+    {% endif %}
+    <!-- divider  -->
+    {% endfor %}
+  </ul>
+</ul>

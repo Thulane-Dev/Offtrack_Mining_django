@@ -1,0 +1,82 @@
+{% load static %}
+<!-- ======= breadcrumb  ======= -->
+<section>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb_text">
+      <li class="breadcrumb-item"><a href="#">{{breadcrumb_title}}</a></li>
+      <li class="breadcrumb-item"><a href="#">{{breadcrumb_sub_title}}</a></li>
+      <!-- <li class="breadcrumb-item active" aria-current="page">Data</li> -->
+    </ol>
+  </nav>
+</section>
+
+{% if breadcrumb_title != 'Marketplace' %}
+<section>
+  <div class="row">
+    <div class="col">
+      {% for product in products %}
+      <div class="p-3 border product_card mb-3">
+        <p class="mb-0 d-flex gap-2">
+          <i class="bi bi-chevron-right"></i> {{product.description_intro}}
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <center>
+    <div class="row mt-2">
+      <div class="col-7">
+        {% for product in products %}
+        <!-- divider  -->
+        {% if forloop.first %}
+        <a
+          href="{% url 'service-quote' product.catalogue.service.id     product.catalogue.service.name|slugify  %}"
+          hx-get="{% url 'service-quote' product.catalogue.service.id     product.catalogue.service.name|slugify  %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          <button
+            class="btn btn-dark blue_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3 hero_btns"
+          >
+            Request Quote <i class="bi bi-arrow-right"></i>
+          </button>
+        </a>
+        {% endif %}
+        <!-- divider  -->
+        {% endfor %}
+      </div>
+    </div>
+  </center>
+</section>
+
+{% else %}
+<!-- ======= Marketplace Products  ======= -->
+<section>
+  <div class="row">
+    {% for product in products %}
+    <div class="col-6 col-lg-3 mb-4">
+      <div class="p-3 border product_card h-100">
+        {% if product.image %}
+        <img src="{{product.image.url}}" alt="" class="product_image mb-4" />
+        {% endif %}
+        <center>
+          <p class="mb-3">{{product.name}}</p>
+          <a
+            href="{% url 'service' product.uuid product.name|slugify  %}"
+            hx-get="{% url 'service' product.uuid product.name|slugify  %}"
+            hx-target="#content"
+            hx-push-url="true"
+          >
+            <button
+              class="btn btn-dark blue_btn py-2 px-5 d-flex gap-2 product_btn mb-3"
+            >
+              More <i class="bi bi-chevron-right"></i>
+            </button>
+          </a>
+        </center>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

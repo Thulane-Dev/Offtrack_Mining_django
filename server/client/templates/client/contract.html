@@ -1,0 +1,174 @@
+{% load static %}
+<section
+  class="contract_page_banner d-flex align-items-end"
+  style="margin-bottom: 0px !important"
+>
+  <div class="container overflow_content">
+    <h2
+      class="headings mb-5 text-white page_header_titles"
+      data-aos="fade-right"
+      data-aos-delay="50"
+      data-aos-duration="800"
+    >
+      Contact Us
+    </h2>
+  </div>
+</section>
+
+<section class="us_orange_container py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mb-5">
+        <h3 class="headings my-3">Get in Touch</h3>
+        <form
+          class="overflow_content"
+          method="POST"
+          action="{% url 'contract-enquiry' %}"
+        >
+          {% csrf_token %}
+
+          <div
+            class="form-floating mb-3"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+          >
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Full Name"
+              name="full_name"
+              required
+            />
+            <label for="floatingInput">Full Name</label>
+          </div>
+          <!-- end input item  -->
+          <div
+            class="form-floating mb-3"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+          >
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Phone"
+              name="phone"
+              required
+            />
+            <label for="floatingInput">Phone</label>
+          </div>
+          <!-- end input item  -->
+          <div
+            class="form-floating mb-3"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+          >
+            <input
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="name@example.com"
+              name="email"
+              required
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <!-- end input item  -->
+          <div
+            class="form-floating mb-4"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+          >
+            <textarea
+              class="form-control"
+              placeholder="Leave a message here"
+              id="floatingTextarea2"
+              style="height: 130px"
+              name="message"
+              required
+            ></textarea>
+            <label for="floatingTextarea2">Message</label>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-dark blue_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3 hero_btns"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+          >
+            Send Now <i class="bi bi-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+      <!-- end col  -->
+      <div class="col-12 col-md-6 mb-5 px-5 overflow_content">
+        <div
+          class="d-flex gap-3 mb-5"
+          data-aos="zoom-in"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          <div class="contract_icon_container">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
+          <div>
+            <h5 class="text-white" style="font-weight: 700">Address</h5>
+            <p class="text-white mb-0">
+              102 Tauthabaneng, Steelport Park, Kutullo Vilage Ngwabe, 1058
+            </p>
+          </div>
+        </div>
+        <!-- end item  -->
+        <div
+          class="d-flex gap-3 mb-5"
+          data-aos="zoom-in"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          <div class="contract_icon_container">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
+          <div>
+            <h5 class="text-white" style="font-weight: 700">Email</h5>
+            <p class="text-white mb-0">info@offtrackmining.co.za</p>
+          </div>
+        </div>
+        <!-- end item  -->
+        <div
+          class="d-flex gap-3 mb-5"
+          data-aos="zoom-in"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          <div class="contract_icon_container">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
+          <div>
+            <h5 class="text-white" style="font-weight: 700">Phone</h5>
+            <p class="text-white mb-2">+27 68 558 9692</p>
+            <p class="text-white mb-0">+27 81 417 2081</p>
+          </div>
+        </div>
+        <!-- end item  -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d65458.55920514567!2d30.042007348632797!3d-24.869717999999985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ec1899ecbf5970d%3A0x6bd867d339a3643e!2sSteelpoort%20Industrial%20Park!5e1!3m2!1sen!2sza!4v1773234144399!5m2!1sen!2sza"
+    class="mb-0"
+    width="100%"
+    height="450"
+    style="border: 0"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+</section>

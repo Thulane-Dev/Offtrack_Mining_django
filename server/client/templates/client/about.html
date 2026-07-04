@@ -1,0 +1,320 @@
+{% load static %}
+<section class="page_banner d-flex align-items-end">
+  <div class="container overflow_content">
+    <h2
+      class="headings mb-5 text-white page_header_titles"
+      data-aos="fade-right"
+      data-aos-delay="50"
+      data-aos-duration="800"
+    >
+      About Us
+    </h2>
+  </div>
+</section>
+
+<section class="container">
+  <div class="row">
+    <div class="col-12 col-md-6 mb-4 overflow_content">
+      <h3
+        class="headings mb-1 headings_fonts"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        About Our Offtrack Mining
+      </h3>
+      <div
+        class="text_underline mb-4"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      ></div>
+      <p data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
+        Offtrack Mining (Pty) Ltd is a reliable repairer and supplier of
+        electrical, mechanical, and instrumentation equipment, serving the
+        mining and industrial sectors. We specialise in the repair,
+        refurbishment, mainte- nance, testing, and supply of critical equipment,
+        including transformers, locomotive battery chargers, electric motors,
+        pumps, idlers, pulleys, valves, actuators, positioners, and flow meters.
+      </p>
+      <p
+        class="mb-5"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        Our services are focused on restoring equipment to optimal operating
+        condition, extending service life, and reducing downtime. With a commit-
+        ment to quality, safety, and technical excellence, Offtrack Mining (Pty)
+        Ltd provides cost-effective and dependable solutions that support
+        efficient and reliable operations.
+      </p>
+
+      <a
+        href="{% url 'contract' %}"
+        hx-get="{% url 'contract' %}"
+        hx-target="#content"
+        hx-push-url="true"
+      >
+        <button
+          class="btn btn-dark orange_secondary_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3"
+          data-aos="fade-right"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+        >
+          Contact Us <i class="bi bi-arrow-right"></i>
+        </button>
+      </a>
+    </div>
+    <div class="col-12 col-md-6 mb-4 overflow_content">
+      <img
+        src="{% static '/images/offtrack_image02.jpg' %}"
+        alt=""
+        class="about_section_image"
+        data-aos="zoom-in"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ======= Banner  ======= -->
+<section class="section_banner" style="margin-top: 100px">
+  <div class="container overflow_content">
+    <center>
+      <h6
+        class="orange_text"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        The People Behind Our Expertise
+      </h6>
+      <h2
+        class="headings mb-3 text-light"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        Meet Our Skilled Leadership Team
+      </h2>
+      <p
+        class="mb-5 text-light"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        Our team brings together years of industry experience, technical
+        excellence, and hands-on knowledge to deliver reliable engineering
+        solutions you can trust.
+      </p>
+    </center>
+    <div class="row overflow_content">
+      <div
+        class="col-12 col-md-4 mb-4"
+        data-aos="zoom-in"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        <center>
+          <div class="team_avatar mb-5">
+            <i class="bi-person-badge-fill"></i>
+          </div>
+          <h5 class="text-white" style="font-weight: 700">Mthokozisi Mathe</h5>
+          <p class="mb-3 text-white">Team Leader</p>
+          <p class="text-white">
+            Mr Mathe comes with a wealth of knowledge and experience having
+            previously worked at Sandvik for 15 years. He is a qualified TMM
+            artisan with experience in underground mining TMM maintenance and
+            rebuilds, and compo- nent repairs including drifters.
+          </p>
+        </center>
+      </div>
+      <!-- end col item  -->
+      <div
+        class="col-12 col-md-4 mb-4"
+        data-aos="zoom-in"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        <center>
+          <div class="team_avatar mb-5">
+            <i class="bi-gear-wide-connected"></i>
+          </div>
+          <h5 class="text-white" style="font-weight: 700">John Mokoena</h5>
+          <p class="mb-3 text-white">Axle Artisan</p>
+          <p class="text-white">
+            Mr Mokoena is a highly experienced drivetrain Kessler-trained
+            artisan with more than 12 years in the industry, with a deep
+            understand- ing of products and services needed to keep any TMM
+            drivetrain efficient and effective.
+          </p>
+        </center>
+      </div>
+      <!-- end col item  -->
+      <div
+        class="col-12 col-md-4 mb-4"
+        data-aos="zoom-in"
+        data-aos-delay="50"
+        data-aos-duration="1000"
+      >
+        <center>
+          <div class="team_avatar mb-5">
+            <i class="bi-tools"></i>
+          </div>
+          <h5 class="text-white" style="font-weight: 700">Bonga Mnguni</h5>
+          <p class="mb-3 text-white">
+            Foreman (Mechanical Engineering and Electrical)
+          </p>
+          <p class="text-white">
+            Bonga comes with a wealth of experience, having worked at Eskom for
+            8 years where he held a senior position. He is well versed in
+            repair, maintenance planning and execution.
+          </p>
+        </center>
+      </div>
+      <!-- end col item  -->
+    </div>
+  </div>
+</section>
+
+<section class="clients_banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 mb-4 overflow_content">
+        <div class="d-flex gap-4">
+          <img
+            src="{% static '/images/review_image02.png' %}"
+            alt=""
+            class="review_image"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+          />
+          <div>
+            <h5
+              class="text-dark team_title mb-3"
+              data-aos="fade-right"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+            >
+              Sibusiso Khumalo
+            </h5>
+            <p
+              class="text-white"
+              data-aos="fade-right"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+            >
+              Offtrack Engineering delivered exceptional service and
+              professionalism. Their team worked efficiently and ensured our
+              equipment was repaired quickly with high-quality results. Highly
+              recommended for mining engineering solutions.
+            </p>
+            <div
+              class="d-flex gap-2"
+              data-aos="fade-right"
+              data-aos-delay="50"
+              data-aos-duration="1000"
+            >
+              <i class="bi bi-star-fill text-light"></i>
+              <i class="bi bi-star-fill text-light"></i>
+              <i class="bi bi-star-fill text-light"></i>
+              <i class="bi bi-star-fill text-light"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end col item  -->
+      <div class="col-12 col-md-6 mb-4">
+        <div class="row" id="stats_section">
+          <div class="col-6">
+            <div class="project_counter text-center">
+              <h2 class="counter" data-target="128">0</h2>
+              <p class="text-light">Projects Complete</p>
+            </div>
+          </div>
+          <!-- end item  -->
+          <div class="col-6">
+            <div class="project_counter text-center">
+              <h2 class="counter" data-target="15">0</h2>
+              <p class="text-light">Years Industry Experience</p>
+            </div>
+          </div>
+          <!-- end item  -->
+          <div class="col-6">
+            <div class="project_counter text-center">
+              <h2 class="counter" data-target="75">0</h2>
+              <p class="text-light">Happy Clients</p>
+            </div>
+          </div>
+          <!-- end item  -->
+          <div class="col-6">
+            <div class="project_counter text-center">
+              <h2 class="counter" data-target="320">0</h2>
+              <p class="text-light">Equipment Repairs Completed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function startCounters() {
+    const counters = document.querySelectorAll(".counter");
+
+    counters.forEach((counter) => {
+      const target = +counter.dataset.target;
+      let count = 0;
+
+      const updateCounter = () => {
+        const increment = target / 80;
+
+        if (count < target) {
+          count += increment;
+          counter.innerText = Math.ceil(count);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.innerText = target;
+        }
+      };
+
+      updateCounter();
+    });
+  }
+
+  function observeStats() {
+    const section = document.querySelector("#stats_section");
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startCounters();
+            observer.unobserve(section);
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+
+    observer.observe(section);
+  }
+
+  /* first page load */
+  document.addEventListener("DOMContentLoaded", observeStats);
+
+  /* HTMX page loads */
+  document.body.addEventListener("htmx:afterSwap", function (evt) {
+    if (evt.detail.target.id === "content") {
+      observeStats();
+    }
+  });
+</script>
+
+

@@ -1,0 +1,203 @@
+{% load static %}
+<!-- divider  -->
+{% if service_type == 'marketplace'%}
+<section class="container margin_top_spacing">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-10 col-lg-6 mb-4">
+      <div class="border product_card p-3">
+        <img
+          src="{% static '/images/no_bg_offtrack.png' %}"
+          alt=""
+          class="request_qt_logo"
+        />
+        <center>
+          <h3 class="headings my-3">Request Quote</h3>
+        </center>
+        <form
+          method="POST"
+          action="{% url 'submit_quote' product.uuid product.name|slugify %}"
+        >
+          {% csrf_token %}
+
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Service"
+              value="{{ product.name }}"
+              name="service"
+              readonly
+            />
+            <label>Service</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Full Name"
+              name="full_name"
+              required
+            />
+            <label>Full Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Phone"
+              name="phone"
+              required
+            />
+            <label>Phone</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="name@example.com"
+              name="email"
+              required
+            />
+            <label>Email address</label>
+          </div>
+
+          <div class="form-floating mb-4">
+            <textarea
+              class="form-control"
+              placeholder="Leave a message here"
+              style="height: 130px"
+              name="message"
+              required
+            ></textarea>
+            <label>Message</label>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-dark orange_secondary_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3 hero_btns mb-3"
+          >
+            Submit Request <i class="bi bi-arrow-right"></i>
+          </button>
+        </form>
+
+        <a
+          aria-current="page"
+          href="{% url 'index' %}"
+          hx-get="{% url 'index' %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          <button
+            class="btn btn-dark blue_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3 hero_btns mb-4"
+          >
+            Cancel
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
+<section class="container margin_top_spacing">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-10 col-lg-6 mb-4">
+      <div class="border product_card p-3">
+        <img
+          src="{% static '/images/no_bg_offtrack.png' %}"
+          alt=""
+          class="request_qt_logo"
+        />
+        <center>
+          <h3 class="headings my-3">Request Quote</h3>
+        </center>
+        <form
+          method="POST"
+          action="{% url 'submit_service_quote' product.id product.name|slugify %}"
+        >
+          {% csrf_token %}
+
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Service"
+              value="{{ product.name }}"
+              name="service"
+              readonly
+            />
+            <label>Service</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Full Name"
+              name="full_name"
+              required
+            />
+            <label>Full Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Phone"
+              name="phone"
+              required
+            />
+            <label>Phone</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="name@example.com"
+              name="email"
+              required
+            />
+            <label>Email address</label>
+          </div>
+
+          <div class="form-floating mb-4">
+            <textarea
+              class="form-control"
+              placeholder="Leave a message here"
+              style="height: 130px"
+              name="message"
+              required
+            ></textarea>
+            <label>Message</label>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-dark orange_secondary_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3 hero_btns mb-3"
+          >
+            Submit Request <i class="bi bi-arrow-right"></i>
+          </button>
+        </form>
+
+        <a
+          aria-current="page"
+          href="{% url 'index' %}"
+          hx-get="{% url 'index' %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          <button
+            class="btn btn-dark blue_btn d-flex justify-content-center gap-3 fw-bold px-4 py-3 hero_btns mb-4"
+          >
+            Cancel
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
