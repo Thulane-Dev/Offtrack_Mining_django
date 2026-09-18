@@ -55,7 +55,7 @@ def IndexView(request):
             default=1,
             output_field=IntegerField(),
         )
-    ).order_by('custom_order')
+    ).order_by('custom_order').exclude(id=8)
 
     breadcrumb_title = "Marketplace"
     breadcrumb_sub_title = "All"
@@ -64,6 +64,14 @@ def IndexView(request):
 
     thank_you_url = request.build_absolute_uri('/thank-you/')
 
+    # Gallery Images
+    gallery = get_object_or_404(
+        ServiceModel.objects.prefetch_related("service__catalogue"),
+        id=8
+    )
+    gallery_catalogue = catalogueModel.objects.filter(service=gallery).first()
+    gallery_images = ProductModel.objects.filter(catalogue=gallery_catalogue)
+
     context = {
         "services": services,
         "products": products,
@@ -71,6 +79,7 @@ def IndexView(request):
         "breadcrumb_sub_title": breadcrumb_sub_title,
         "thank_you_url": thank_you_url,
         "display_labels": True,
+        "gallery_images": gallery_images,
         "page": "client/index.html",
     }
 
@@ -81,7 +90,16 @@ def IndexView(request):
 
 # ============= About Page =============
 def AboutView(request):
+    # Gallery Images
+    gallery = get_object_or_404(
+        ServiceModel.objects.prefetch_related("service__catalogue"),
+        id=8
+    )
+    gallery_catalogue = catalogueModel.objects.filter(service=gallery).first()
+    gallery_images = ProductModel.objects.filter(catalogue=gallery_catalogue)
+
     context = {
+        "gallery_images": gallery_images,
         "page": "client/about.html",
     }
 
@@ -115,6 +133,7 @@ def MarketplaceView(request):
         "breadcrumb_title": breadcrumb_title,
         "breadcrumb_sub_title": breadcrumb_sub_title,
         "display_labels": False,
+
         "page": "client/services.html",
     }
 
@@ -133,7 +152,7 @@ def ServicesView(request):
             default=1,
             output_field=IntegerField(),
         )
-    ).order_by('custom_order').exclude(name="Marketplace")
+    ).order_by('custom_order').exclude(name="Marketplace").exclude(id=8)
 
     first_service = services.first()  # or services[0] if you're sure it exists
 
@@ -143,12 +162,21 @@ def ServicesView(request):
         catalogue__service=first_service
     )
 
+    # Gallery Images
+    gallery = get_object_or_404(
+        ServiceModel.objects.prefetch_related("service__catalogue"),
+        id=8
+    )
+    gallery_catalogue = catalogueModel.objects.filter(service=gallery).first()
+    gallery_images = ProductModel.objects.filter(catalogue=gallery_catalogue)
+
     context = {
         "services": services,
         "products": products,
         "breadcrumb_title": breadcrumb_title,
         "breadcrumb_sub_title": breadcrumb_sub_title,
         "display_labels": False,
+        "gallery_images": gallery_images,
         "page": "client/services_page.html",
     }
 

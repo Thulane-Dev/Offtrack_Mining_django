@@ -432,6 +432,24 @@ a {
   flex-shrink: 0px;
 }
 
+.gallery_image {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.gallery_image:hover {
+  transform: scale(1.03);
+}
+
+.modal-content img {
+  max-height: 90vh;
+  margin: auto;
+  object-fit: contain;
+}
+
 @media screen and (max-width: 576px) {
   .section_spacing {
     margin-top: 55px;
@@ -470,5 +488,33 @@ a {
     width: 100%;
     object-fit: contain;
     border-radius: 10px;
+  }
+
+  .gallery_image {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
+
+/* MD SCREEN  */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .hero_logo {
+    height: 150px;
+    min-width: 100px;
+    object-fit: cover;
+  }
+
+  .hero_text {
+    font-size: 32px;
+  }
+
+  .gallery_image {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.2s;
   }
 }

@@ -15,10 +15,10 @@
 </section>
 
 <!-- ======= Service Catalogue  ======= -->
-<section class="d-none d-md-block" style="margin-top: 100px">
+<section class="d-none d-lg-block" style="margin-top: 100px">
   <div class="container">
     <div class="row">
-      <div class="col-3">
+      <div class="col-12 col-md-5 col-lg-4">
         <ul class="nav flex-column">
           {% for data in services %}
           <li class="nav-item">
@@ -90,7 +90,7 @@
           {% endfor %}
         </ul>
       </div>
-      <div class="col">
+      <div class="col-12 col-md-7 col-lg-8">
         <!-- ======= Catalog  ======= -->
         <div id="catalogPartial">
           {% include 'partials/catalogue_partial.html' %}
@@ -102,11 +102,13 @@
 
 <!-- ======= Small Screen Service Catalogue  ======= -->
 <section
-  class="section_spacing container d-block d-md-none"
+  class="section_spacing container d-block d-lg-none"
   style="margin-top: 100px"
 >
   <div>{% include 'partials/sm_products_partial.html' %}</div>
 </section>
+
+
 
 <section class="mt-5">
   <div class="us_orange_container d-flex align-items-center">

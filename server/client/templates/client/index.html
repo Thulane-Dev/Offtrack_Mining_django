@@ -49,7 +49,7 @@
     </center>
     <div class="row d-flex justify-content-center mt-5 overflow_content">
       <div
-        class="col-12 col-md-3 mb-3"
+        class="col-12 col-md-6 col-lg-3 mb-3"
         data-aos="fade-left"
         data-aos-delay="50"
         data-aos-duration="1000"
@@ -68,7 +68,7 @@
         </a>
       </div>
       <div
-        class="col-12 col-md-3 mb-3"
+        class="col-12 col-md-6 col-lg-3 mb-3"
         data-aos="fade-left"
         data-aos-delay="50"
         data-aos-duration="1000"
@@ -91,7 +91,7 @@
 </section>
 
 <!-- ======= Service Catalogue  ======= -->
-<section class="section_spacing d-none d-md-block">
+<section class="section_spacing d-none d-lg-block">
   <div class="container">
     <div class="d-flex justify-content-end">
       <a
@@ -108,7 +108,7 @@
       </a>
     </div>
     <div class="row">
-      <div class="col-12 col-lg-3 mb-4">
+      <div class="col-12 col-md-5 col-lg-4 mb-4">
         <ul class="nav flex-column" id="servicesAccordion">
           {% for data in services %}
           <li class="nav-item">
@@ -188,7 +188,7 @@
           {% endfor %}
         </ul>
       </div>
-      <div class="col-12 col-lg-8 mb-4">
+      <div class="col-12 col-md-7 col-lg-8 mb-4">
         <!-- ======= Catalog  ======= -->
         <div id="catalogPartial">
           {% include 'partials/catalogue_partial.html' %}
@@ -199,12 +199,22 @@
 </section>
 
 <!-- ======= Small Screen Service Catalogue  ======= -->
-<section class="section_spacing container mb-5 d-block d-md-none">
+<section class="section_spacing container mb-5 d-block d-lg-none">
   <div>{% include 'partials/sm_products_partial.html' %}</div>
 </section>
 
+<!-- ======= Gallery  ======= -->
+<section class="container-fluid mt-5">
+  <center>
+    <h6 class="orange_text">Gallery</h6>
+    <h2 class="headings mb-4">Our Work History</h2>
+  </center>
+
+  <div>{% include 'partials/gallery_images_partial.html' %}</div>
+</section>
+
 <!-- ======= Banner  ======= -->
-<section class="overflow_content">
+<section class="overflow_content" style="margin-top: 80px">
   <div
     class="section_banner"
     data-aos="fade-right"
@@ -478,7 +488,7 @@
     </center>
     <div class="row d-flex justify-content-center overflow_content">
       <div
-        class="col-12 col-md-4 mb-4"
+        class="col-12 col-md-6 col-lg-4 mb-4"
         data-aos="zoom-in"
         data-aos-delay="50"
         data-aos-duration="1000"
@@ -499,7 +509,7 @@
       </div>
       <!-- end col item  -->
       <div
-        class="col-12 col-md-4 mb-4"
+        class="col-12 col-md-6 col-lg-4 mb-4"
         data-aos="zoom-in"
         data-aos-delay="50"
         data-aos-duration="1000"
@@ -525,5 +535,3 @@
 
 <!-- bottom spacing  -->
 <div class="section_spacing"></div>
-
-

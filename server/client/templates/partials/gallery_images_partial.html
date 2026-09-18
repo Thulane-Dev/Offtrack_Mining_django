@@ -1,0 +1,59 @@
+{% load static %}
+
+<div class="row d-flex justify-content-center">
+  {% for image in gallery_images %}
+  <div class="col-6 col-md-6 col-lg mb-3">
+    <img
+      src="{{ image.image.url }}"
+      alt=""
+      class="gallery_image img-fluid"
+      style="cursor: pointer"
+      data-bs-toggle="modal"
+      data-bs-target="#imageModal"
+      data-image="{{ image.image.url }}"
+    />
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bg-transparent border-0">
+      <button
+        type="button"
+        class="btn-close btn-close-white ms-auto m-2"
+        data-bs-dismiss="modal"
+      ></button>
+
+      <img id="modalImage" src="" class="img-fluid rounded" alt="" />
+    </div>
+  </div>
+</div>
+
+<script>
+  function initGalleryModal() {
+    const imageModal = document.getElementById("imageModal");
+
+    if (!imageModal) return;
+
+    // Prevent attaching the listener multiple times
+    if (imageModal.dataset.initialized) return;
+    imageModal.dataset.initialized = "true";
+
+    imageModal.addEventListener("show.bs.modal", function (event) {
+      const img = event.relatedTarget;
+      const imageUrl = img.dataset.image;
+
+      document.getElementById("modalImage").src = imageUrl;
+    });
+  }
+
+  // Initial page load
+  document.addEventListener("DOMContentLoaded", initGalleryModal);
+
+  // After HTMX swaps content
+  document.body.addEventListener("htmx:afterSwap", function () {
+    initGalleryModal();
+  });
+</script>

@@ -17,12 +17,19 @@
         class="d-inline-block align-text-top navbar_logo"
       />
     </a>
-    <a href="{% url 'menu' %}">
-      <button class="navbar-toggler border-0" type="button">
-        <i class="bi bi-list menu_icon"></i>
-      </button>
-    </a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <button
+      class="navbar-toggler border-0"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasExample"
+      aria-controls="offcanvasExample"
+    >
+      <i class="bi bi-list menu_icon"></i>
+    </button>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent d-flex align-items-center "
+    >
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a
@@ -94,3 +101,71 @@
     </div>
   </div>
 </nav>
+
+<!-- ======= OFFCANVAS MENU  ======= -->
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="pt-4">
+      <img
+        src="{% static '/images/no_bg_offtrack.png' %}"
+        alt=""
+        class="d-inline-block align-text-top navbar_logo mb-4"
+        style="height: 90px !important; width: 100%"
+      />
+    </div>
+    <section>
+      <div class="container" style="margin-bottom: 70px; margin-top: 90px">
+        <center>
+          <a href="{% url 'index' %}">
+            <div>
+              <i class="bi bi-house sm_menu_icon"></i>
+              <h6 class="mb-4 mt-2" style="font-weight: 600">Home</h6>
+            </div>
+          </a>
+          <hr class="my-3 list_border" />
+          <a href="{% url 'about' %}">
+            <div>
+              <i class="bi bi-people sm_menu_icon"></i>
+              <h6 class="mb-4 mt-2" style="font-weight: 600">About</h6>
+            </div>
+          </a>
+          <hr class="my-3 list_border" />
+          <a href="{% url 'marketplace' %}">
+            <div>
+              <i class="bi bi-shop sm_menu_icon"></i>
+              <h6 class="mb-4 mt-2" style="font-weight: 600">Marketplace</h6>
+            </div>
+          </a>
+          <hr class="my-3 list_border" />
+          <a href="{% url 'services' %}">
+            <div>
+              <i class="bi bi-gear sm_menu_icon"></i>
+              <h6 class="mb-4 mt-2" style="font-weight: 600">Services</h6>
+            </div>
+          </a>
+          <hr class="my-3 list_border" />
+          <a href="{% url 'contract' %}">
+            <div>
+              <i class="bi-envelope sm_menu_icon"></i>
+              <h6 class="mb-4 mt-2" style="font-weight: 600">Contract Us</h6>
+            </div>
+          </a>
+        </center>
+      </div>
+    </section>
+  </div>
+</div>
